@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>bài 1</h1>
+    <label for="number">Nhập số n:</label>
+    <input type="number" id="number" />
+    <button onclick="tongsonguyen()">Tính tổng</button>
+
+    <p id="result"></p>
+
+    <script>
+      function sumTo(n) {
+        let sum = 0;
+        for (let i = 1; i <= n; i++) {
+          sum += i;
+        }
+        return sum;
+      }
+
+      function tongsonguyen() {
+        const n = parseInt(document.getElementById("number").value);
+        if (isNaN(n) || n <= 0) {
+          document.getElementById("result").innerText =
+            "Vui lòng nhập một số hợp lệ.";
+        } else {
+          const result = sumTo(n);
+          document.getElementById("result").innerText =
+            "Tổng từ 1 đến " + n + " là: " + result;
+        }
+      }
+    </script>
+
+    <h1>Bài 2</h1>
+
+    <label for="number1">Nhập số n:</label>
+    <input type="number" id="number1" />
+    <button onclick="tongsochan()">Tính tổng</button>
+
+    <p id="result1"></p>
+
+    <script>
+      function evenSumTo(n) {
+        let sum = 0;
+        for (let a = 2; a <= n; a += 2) {
+          // Vòng lặp từ 2 đến n với bước nhảy 2
+          sum += a; // Cộng dồn vào sum
+        }
+        return sum; // Trả về tổng
+      }
+
+      function tongsochan() {
+        const n1 = parseInt(document.getElementById("number1").value); // Lấy giá trị từ input
+        if (isNaN(n1) || n1 <= 0) {
+          // Kiểm tra xem giá trị nhập vào có hợp lệ không
+          document.getElementById("result1").innerText =
+            "Vui lòng nhập một số hợp lệ.";
+        } else {
+          const result = evenSumTo(n1); // Tính tổng số chẵn
+          document.getElementById("result1").innerText =
+            "Tổng các số chẵn từ 1 đến " + n1 + " là: " + result; // Hiển thị kết quả
+        }
+      }
+    </script>
+    <h1>bài 3</h1>
+    <label for="oddNumber">Nhập số n:</label>
+    <input type="number" id="oddNumber" />
+    <button onclick="calculateOddSum()">Tính tổng</button>
+    <!-- Đúng là 'onclick' -->
+
+    <p id="oddResult"></p>
+
+    <script>
+      function oddSumTo(n) {
+        let sum = 0;
+        for (let i = 1; i <= n; i += 2) {
+          // Lặp qua các số lẻ
+          sum += i;
+        }
+        return sum;
+      }
+
+      function calculateOddSum() {
+        const n = parseInt(document.getElementById("oddNumber").value);
+        if (isNaN(n) || n <= 0) {
+          document.getElementById("oddResult").innerText =
+            "Vui lòng nhập một số hợp lệ.";
+        } else {
+          const result = oddSumTo(n);
+          document.getElementById("oddResult").innerText =
+            "Tổng các số lẻ từ 1 đến " + n + " là: " + result;
+        }
+      }
+    </script>
+    <h1>bài 4</h1>
+    <label for="primeNumber">Nhập số n:</label>
+    <input type="number" id="primeNumber" />
+    <button onclick="checkPrime()">Kiểm tra</button>
+
+    <p id="primeResult"></p>
+
+    <script>
+      function isPrime(n) {
+        if (n <= 1) return false; // Số nhỏ hơn hoặc bằng 1 không phải số nguyên tố
+        for (let i = 2; i <= Math.sqrt(n); i++) {
+          // Kiểm tra ước từ 2 đến √n
+          if (n % i === 0) {
+            return false; // Nếu n chia hết cho i, không phải số nguyên tố
+          }
+        }
+        return true; // Nếu không chia hết cho số nào, là số nguyên tố
+      }
+
+      function checkPrime() {
+        const n = parseInt(document.getElementById("primeNumber").value);
+        if (isNaN(n)) {
+          document.getElementById("primeResult").innerText =
+            "Vui lòng nhập một số hợp lệ.";
+        } else {
+          const result = isPrime(n);
+          if (result) {
+            document.getElementById("primeResult").innerText =
+              n + " là số nguyên tố.";
+          } else {
+            document.getElementById("primeResult").innerText =
+              n + " không phải là số nguyên tố.";
+          }
+        }
+      }
+    </script>
+    <h1>bài 5</h1>
+    <label for="numberA">Nhập số a:</label>
+    <input type="number" id="numberA" />
+    <br />
+    <label for="numberB">Nhập số b:</label>
+    <input type="number" id="numberB" />
+    <br />
+    <button onclick="calculateGCD()">Tính ƯCLN</button>
+
+    <p id="gcdResult"></p>
+
+    <script>
+      function gcd(a, b) {
+        while (b !== 0) {
+          let temp = b;
+          b = a % b;
+          a = temp;
+        }
+        return a;
+      }
+
+      function calculateGCD() {
+        const a = parseInt(document.getElementById("numberA").value);
+        const b = parseInt(document.getElementById("numberB").value);
+
+        if (isNaN(a) || isNaN(b)) {
+          document.getElementById("gcdResult").innerText =
+            "Vui lòng nhập số hợp lệ.";
+        } else {
+          const result = gcd(a, b);
+          document.getElementById("gcdResult").innerText =
+            "Ước chung lớn nhất của " + a + " và " + b + " là: " + result;
+        }
+      }
+    </script>
+  </body>
+</html>
